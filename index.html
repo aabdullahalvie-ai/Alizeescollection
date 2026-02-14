@@ -2344,27 +2344,44 @@ document.addEventListener('keydown', function(e) {
 });
 
 // ========== MUSIC PLAYER ==========
+let hasInteracted = false;
+
 function toggleMusic() {
     const music = document.getElementById('bgMusic');
     const btn = document.getElementById('playPauseBtn');
     
     if (music.paused) {
-        music.play().catch(e => console.log('Audio play failed:', e));
-        btn.textContent = '⏸️';
+        music.play()
+            .then(() => {
+                btn.textContent = '⏸️';
+                hasInteracted = true;
+            })
+            .catch(e => console.log('Audio play failed:', e));
     } else {
         music.pause();
         btn.textContent = '▶️';
     }
 }
 
-// Auto-play music on first user interaction
-let hasInteracted = false;
-document.addEventListener('click', function() {
+// Auto-play music on first user interaction (anywhere on page)
+document.addEventListener('click', function(e) {
+    // Don't auto-play if they clicked the music button
+    if (e.target.id === 'playPauseBtn' || e.target.closest('.play-pause-btn')) {
+        return;
+    }
+    
     if (!hasInteracted) {
         const music = document.getElementById('bgMusic');
-        music.play().catch(e => console.log('Audio requires user interaction'));
-        document.getElementById('playPauseBtn').textContent = '⏸️';
-        hasInteracted = true;
+        const btn = document.getElementById('playPauseBtn');
+        
+        music.play()
+            .then(() => {
+                btn.textContent = '⏸️';
+                hasInteracted = true;
+            })
+            .catch(e => {
+                console.log('Audio requires user interaction');
+            });
     }
 }, { once: true });
 </script>
