@@ -1071,6 +1071,302 @@ body::after {
     display: none;
 }
 
+/* ========== IMPORTANT DATES CALENDAR ========== */
+.dates-section {
+    padding: 60px 20px 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.dates-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #8b2635;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
+}
+
+.dates-title::before {
+    content: 'our special days ♡';
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.2rem;
+    color: #9b6b6b;
+    opacity: 0.7;
+    white-space: nowrap;
+}
+
+.dates-title::after {
+    content: '♥';
+    display: block;
+    font-size: 2rem;
+    margin-top: 15px;
+    color: #d4a5a5;
+    animation: heartbeat 1.5s infinite;
+}
+
+.calendar-carousel {
+    position: relative;
+    max-width: 340px;
+    margin: 60px auto 20px;
+    padding: 20px 0;
+}
+
+.carousel-track {
+    overflow: hidden;
+    position: relative;
+}
+
+.calendars-grid {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mini-calendar {
+    background: #fffbf5;
+    border-radius: 15px;
+    overflow: visible;
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.12),
+        0 3px 8px rgba(139, 38, 53, 0.08);
+    position: relative;
+    min-width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.mini-calendar::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 25px;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 182, 193, 0.55),
+        rgba(255, 182, 193, 0.55) 8px,
+        rgba(255, 218, 224, 0.45) 8px,
+        rgba(255, 218, 224, 0.45) 16px
+    );
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    z-index: 2;
+}
+
+.mini-calendar:nth-child(2)::before {
+    background: repeating-linear-gradient(
+        -45deg,
+        rgba(212, 175, 55, 0.4),
+        rgba(212, 175, 55, 0.4) 8px,
+        rgba(255, 218, 224, 0.35) 8px,
+        rgba(255, 218, 224, 0.35) 16px
+    );
+}
+
+.mini-calendar:nth-child(3)::before {
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(182, 212, 193, 0.4),
+        rgba(182, 212, 193, 0.4) 8px,
+        rgba(218, 255, 224, 0.35) 8px,
+        rgba(218, 255, 224, 0.35) 16px
+    );
+}
+
+/* Carousel navigation arrows */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #8b2635, #a8314a);
+    color: #fff;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(139, 38, 53, 0.3);
+    transition: all 0.3s;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 6px 20px rgba(139, 38, 53, 0.45);
+}
+
+.carousel-btn.prev {
+    left: -55px;
+}
+
+.carousel-btn.next {
+    right: -55px;
+}
+
+/* Dot indicators */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(139, 38, 53, 0.25);
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid rgba(139, 38, 53, 0.2);
+}
+
+.carousel-dot.active {
+    background: #8b2635;
+    transform: scale(1.2);
+    border-color: #8b2635;
+}
+
+/* Slide counter */
+.carousel-counter {
+    text-align: center;
+    font-family: 'Kalam', cursive;
+    font-size: 1rem;
+    color: #9b6b6b;
+    margin-top: 10px;
+}
+
+@media (max-width: 480px) {
+    .carousel-btn.prev { left: -40px; }
+    .carousel-btn.next { right: -40px; }
+    .carousel-btn { width: 38px; height: 38px; font-size: 1.1rem; }
+}
+
+.cal-header {
+    background: linear-gradient(135deg, #8b2635, #a8314a);
+    color: #fff;
+    padding: 18px 15px 15px;
+    text-align: center;
+    border-radius: 15px 15px 0 0;
+}
+
+.cal-month {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.cal-year {
+    font-family: 'Kalam', cursive;
+    font-size: 1rem;
+    opacity: 0.85;
+    margin-top: 3px;
+}
+
+.cal-days-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: rgba(139, 38, 53, 0.08);
+    border-bottom: 2px solid rgba(139, 38, 53, 0.15);
+}
+
+.cal-day-label {
+    text-align: center;
+    padding: 8px 0;
+    font-family: 'Caveat', cursive;
+    font-size: 0.85rem;
+    color: #8b2635;
+    font-weight: 700;
+}
+
+.cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 10px;
+    gap: 3px;
+}
+
+.cal-cell {
+    text-align: center;
+    padding: 8px 4px;
+    font-family: 'Kalam', cursive;
+    font-size: 0.95rem;
+    color: #6b4b45;
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.2s;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cal-cell.empty {
+    color: transparent;
+}
+
+.cal-cell.special {
+    color: #8b2635;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.cal-cell.special::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 36px;
+    height: 36px;
+    border: 3px solid #8b2635;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(139, 38, 53, 0.15);
+}
+
+.cal-event {
+    background: linear-gradient(135deg, rgba(139, 38, 53, 0.05), rgba(139, 38, 53, 0.08));
+    border-top: 2px dashed rgba(139, 38, 53, 0.2);
+    padding: 15px;
+    text-align: center;
+    border-radius: 0 0 15px 15px;
+}
+
+.cal-event-emoji {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.cal-event-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.15rem;
+    color: #8b2635;
+    line-height: 1.4;
+}
+
+.cal-days-since {
+    font-family: 'Indie Flower', cursive;
+    font-size: 0.9rem;
+    color: #9b6b6b;
+    margin-top: 6px;
+    display: block;
+}
+
 /* ========== MUSIC PLAYER ========== */
 .music-player {
     position: fixed;
@@ -1353,6 +1649,282 @@ body::after {
                 <img src="ourphoto9.JPG" alt="Our Memory 9" class="polaroid-image">
             </div>
         </div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+<!-- ========== IMPORTANT DATES ========== -->
+<div class="dates-section" id="datesSection">
+    <h2 class="dates-title">Important Dates</h2>
+
+    <div class="calendar-carousel">
+        <!-- Prev Button -->
+        <button class="carousel-btn prev" onclick="moveCarousel(-1)">←</button>
+
+        <!-- Carousel Track -->
+        <div class="carousel-track">
+            <div class="calendars-grid" id="calendarTrack">
+
+                <!-- Calendar 1: 21st February 2024 -->
+                <div class="mini-calendar">
+                    <div class="cal-header">
+                        <div class="cal-month">February</div>
+                        <div class="cal-year">2024</div>
+                    </div>
+                    <div class="cal-days-header">
+                        <div class="cal-day-label">Su</div>
+                        <div class="cal-day-label">Mo</div>
+                        <div class="cal-day-label">Tu</div>
+                        <div class="cal-day-label">We</div>
+                        <div class="cal-day-label">Th</div>
+                        <div class="cal-day-label">Fr</div>
+                        <div class="cal-day-label">Sa</div>
+                    </div>
+                    <div class="cal-grid">
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell">1</div>
+                        <div class="cal-cell">2</div>
+                        <div class="cal-cell">3</div>
+                        <div class="cal-cell">4</div>
+                        <div class="cal-cell">5</div>
+                        <div class="cal-cell">6</div>
+                        <div class="cal-cell">7</div>
+                        <div class="cal-cell">8</div>
+                        <div class="cal-cell">9</div>
+                        <div class="cal-cell">10</div>
+                        <div class="cal-cell">11</div>
+                        <div class="cal-cell">12</div>
+                        <div class="cal-cell">13</div>
+                        <div class="cal-cell">14</div>
+                        <div class="cal-cell">15</div>
+                        <div class="cal-cell">16</div>
+                        <div class="cal-cell">17</div>
+                        <div class="cal-cell">18</div>
+                        <div class="cal-cell">19</div>
+                        <div class="cal-cell">20</div>
+                        <div class="cal-cell special">21</div>
+                        <div class="cal-cell">22</div>
+                        <div class="cal-cell">23</div>
+                        <div class="cal-cell">24</div>
+                        <div class="cal-cell">25</div>
+                        <div class="cal-cell">26</div>
+                        <div class="cal-cell">27</div>
+                        <div class="cal-cell">28</div>
+                        <div class="cal-cell">29</div>
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell empty"></div>
+                    </div>
+                    <div class="cal-event">
+                        <span class="cal-event-emoji">💫</span>
+                        <div class="cal-event-text">The Day We First Met</div>
+                        <span class="cal-days-since" id="days1"></span>
+                    </div>
+                </div>
+
+                <!-- Calendar 2: 22nd April 2024 -->
+                <div class="mini-calendar">
+                    <div class="cal-header">
+                        <div class="cal-month">April</div>
+                        <div class="cal-year">2024</div>
+                    </div>
+                    <div class="cal-days-header">
+                        <div class="cal-day-label">Su</div>
+                        <div class="cal-day-label">Mo</div>
+                        <div class="cal-day-label">Tu</div>
+                        <div class="cal-day-label">We</div>
+                        <div class="cal-day-label">Th</div>
+                        <div class="cal-day-label">Fr</div>
+                        <div class="cal-day-label">Sa</div>
+                    </div>
+                    <div class="cal-grid">
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell">1</div>
+                        <div class="cal-cell">2</div>
+                        <div class="cal-cell">3</div>
+                        <div class="cal-cell">4</div>
+                        <div class="cal-cell">5</div>
+                        <div class="cal-cell">6</div>
+                        <div class="cal-cell">7</div>
+                        <div class="cal-cell">8</div>
+                        <div class="cal-cell">9</div>
+                        <div class="cal-cell">10</div>
+                        <div class="cal-cell">11</div>
+                        <div class="cal-cell">12</div>
+                        <div class="cal-cell">13</div>
+                        <div class="cal-cell">14</div>
+                        <div class="cal-cell">15</div>
+                        <div class="cal-cell">16</div>
+                        <div class="cal-cell">17</div>
+                        <div class="cal-cell">18</div>
+                        <div class="cal-cell">19</div>
+                        <div class="cal-cell">20</div>
+                        <div class="cal-cell">21</div>
+                        <div class="cal-cell special">22</div>
+                        <div class="cal-cell">23</div>
+                        <div class="cal-cell">24</div>
+                        <div class="cal-cell">25</div>
+                        <div class="cal-cell">26</div>
+                        <div class="cal-cell">27</div>
+                        <div class="cal-cell">28</div>
+                        <div class="cal-cell">29</div>
+                        <div class="cal-cell">30</div>
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell empty"></div>
+                    </div>
+                    <div class="cal-event">
+                        <span class="cal-event-emoji">👅👅</span>
+                        <div class="cal-event-text">When She Looked The Hottest</div>
+                        <span class="cal-days-since" id="days2"></span>
+                    </div>
+                </div>
+
+                <!-- Calendar 3: 8th October 2025 -->
+                <div class="mini-calendar">
+                    <div class="cal-header">
+                        <div class="cal-month">October</div>
+                        <div class="cal-year">2025</div>
+                    </div>
+                    <div class="cal-days-header">
+                        <div class="cal-day-label">Su</div>
+                        <div class="cal-day-label">Mo</div>
+                        <div class="cal-day-label">Tu</div>
+                        <div class="cal-day-label">We</div>
+                        <div class="cal-day-label">Th</div>
+                        <div class="cal-day-label">Fr</div>
+                        <div class="cal-day-label">Sa</div>
+                    </div>
+                    <div class="cal-grid">
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell">1</div>
+                        <div class="cal-cell">2</div>
+                        <div class="cal-cell">3</div>
+                        <div class="cal-cell">4</div>
+                        <div class="cal-cell">5</div>
+                        <div class="cal-cell">6</div>
+                        <div class="cal-cell">7</div>
+                        <div class="cal-cell special">8</div>
+                        <div class="cal-cell">9</div>
+                        <div class="cal-cell">10</div>
+                        <div class="cal-cell">11</div>
+                        <div class="cal-cell">12</div>
+                        <div class="cal-cell">13</div>
+                        <div class="cal-cell">14</div>
+                        <div class="cal-cell">15</div>
+                        <div class="cal-cell">16</div>
+                        <div class="cal-cell">17</div>
+                        <div class="cal-cell">18</div>
+                        <div class="cal-cell">19</div>
+                        <div class="cal-cell">20</div>
+                        <div class="cal-cell">21</div>
+                        <div class="cal-cell">22</div>
+                        <div class="cal-cell">23</div>
+                        <div class="cal-cell">24</div>
+                        <div class="cal-cell">25</div>
+                        <div class="cal-cell">26</div>
+                        <div class="cal-cell">27</div>
+                        <div class="cal-cell">28</div>
+                        <div class="cal-cell">29</div>
+                        <div class="cal-cell">30</div>
+                        <div class="cal-cell">31</div>
+                        <div class="cal-cell empty"></div>
+                    </div>
+                    <div class="cal-event">
+                        <span class="cal-event-emoji">💌</span>
+                        <div class="cal-event-text">We Started Talking Again</div>
+                        <span class="cal-days-since" id="days3"></span>
+                    </div>
+                </div>
+
+                <!-- Calendar 4: 4th January 2026 -->
+                <div class="mini-calendar">
+                    <div class="cal-header">
+                        <div class="cal-month">January</div>
+                        <div class="cal-year">2026</div>
+                    </div>
+                    <div class="cal-days-header">
+                        <div class="cal-day-label">Su</div>
+                        <div class="cal-day-label">Mo</div>
+                        <div class="cal-day-label">Tu</div>
+                        <div class="cal-day-label">We</div>
+                        <div class="cal-day-label">Th</div>
+                        <div class="cal-day-label">Fr</div>
+                        <div class="cal-day-label">Sa</div>
+                    </div>
+                    <div class="cal-grid">
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell empty"></div>
+                        <div class="cal-cell">1</div>
+                        <div class="cal-cell">2</div>
+                        <div class="cal-cell">3</div>
+                        <div class="cal-cell special">4</div>
+                        <div class="cal-cell">5</div>
+                        <div class="cal-cell">6</div>
+                        <div class="cal-cell">7</div>
+                        <div class="cal-cell">8</div>
+                        <div class="cal-cell">9</div>
+                        <div class="cal-cell">10</div>
+                        <div class="cal-cell">11</div>
+                        <div class="cal-cell">12</div>
+                        <div class="cal-cell">13</div>
+                        <div class="cal-cell">14</div>
+                        <div class="cal-cell">15</div>
+                        <div class="cal-cell">16</div>
+                        <div class="cal-cell">17</div>
+                        <div class="cal-cell">18</div>
+                        <div class="cal-cell">19</div>
+                        <div class="cal-cell">20</div>
+                        <div class="cal-cell">21</div>
+                        <div class="cal-cell">22</div>
+                        <div class="cal-cell">23</div>
+                        <div class="cal-cell">24</div>
+                        <div class="cal-cell">25</div>
+                        <div class="cal-cell">26</div>
+                        <div class="cal-cell">27</div>
+                        <div class="cal-cell">28</div>
+                        <div class="cal-cell">29</div>
+                        <div class="cal-cell">30</div>
+                        <div class="cal-cell">31</div>
+                    </div>
+                    <div class="cal-event">
+                        <span class="cal-event-emoji">💝</span>
+                        <div class="cal-event-text">Our Unofficial Anniversary</div>
+                        <span class="cal-days-since" id="days4"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Next Button -->
+        <button class="carousel-btn next" onclick="moveCarousel(1)">→</button>
+
+        <!-- Dot Indicators -->
+        <div class="carousel-dots">
+            <div class="carousel-dot active" onclick="goToSlide(0)"></div>
+            <div class="carousel-dot" onclick="goToSlide(1)"></div>
+            <div class="carousel-dot" onclick="goToSlide(2)"></div>
+            <div class="carousel-dot" onclick="goToSlide(3)"></div>
+        </div>
+        <div class="carousel-counter" id="carouselCounter">1 / 4</div>
+    </div>
+</div>
+
+
+       
     </div>
 </div>
 
@@ -2343,47 +2915,100 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// ========== MUSIC PLAYER ==========
-let hasInteracted = false;
+// ========== DAYS SINCE CALCULATOR ==========
+function daysSince(dateStr) {
+    const past = new Date(dateStr);
+    const today = new Date();
+    const diff = Math.floor((today - past) / (1000 * 60 * 60 * 24));
+    if (diff === 0) return "Today! 🎉";
+    if (diff === 1) return "Yesterday ♡";
+    if (diff < 0) return Math.abs(diff) + " days to go ♡";
+    return diff + " days ago ♡";
+}
+
+document.getElementById('days1').textContent = daysSince('2024-02-21');
+document.getElementById('days2').textContent = daysSince('2024-04-22');
+document.getElementById('days3').textContent = daysSince('2025-10-08');
+document.getElementById('days4').textContent = daysSince('2026-01-04');
+
+// ========== CALENDAR CAROUSEL ==========
+let currentSlide = 0;
+const totalSlides = 4;
+
+function moveCarousel(direction) {
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+    updateCarousel();
+}
+
+function goToSlide(index) {
+    currentSlide = index;
+    updateCarousel();
+}
+
+function updateCarousel() {
+    const track = document.getElementById('calendarTrack');
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    // Update dots
+    document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+    });
+
+    // Update counter
+    document.getElementById('carouselCounter').textContent = `${currentSlide + 1} / ${totalSlides}`;
+}
+
+// Touch/swipe support for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.querySelector('.carousel-track').addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.querySelector('.carousel-track').addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    if (touchStartX - touchEndX > 50) moveCarousel(1);
+    if (touchEndX - touchStartX > 50) moveCarousel(-1);
+});
+let isPlaying = false;
+let isTransitioning = false;
 
 function toggleMusic() {
+    // Prevent multiple rapid clicks
+    if (isTransitioning) return;
+    
+    isTransitioning = true;
     const music = document.getElementById('bgMusic');
     const btn = document.getElementById('playPauseBtn');
     
-    if (music.paused) {
+    if (!isPlaying) {
+        // Start playing
         music.play()
             .then(() => {
                 btn.textContent = '⏸️';
-                hasInteracted = true;
+                isPlaying = true;
+                isTransitioning = false;
             })
-            .catch(e => console.log('Audio play failed:', e));
+            .catch(e => {
+                console.log('Audio play failed:', e);
+                alert('Cannot play music. Please check:\n1. music.mp3 is uploaded\n2. File is in the same folder as index.html\n3. Try refreshing the page');
+                isTransitioning = false;
+            });
     } else {
+        // Pause
         music.pause();
         btn.textContent = '▶️';
+        isPlaying = false;
+        isTransitioning = false;
     }
 }
 
-// Auto-play music on first user interaction (anywhere on page)
-document.addEventListener('click', function(e) {
-    // Don't auto-play if they clicked the music button
-    if (e.target.id === 'playPauseBtn' || e.target.closest('.play-pause-btn')) {
-        return;
-    }
-    
-    if (!hasInteracted) {
-        const music = document.getElementById('bgMusic');
-        const btn = document.getElementById('playPauseBtn');
-        
-        music.play()
-            .then(() => {
-                btn.textContent = '⏸️';
-                hasInteracted = true;
-            })
-            .catch(e => {
-                console.log('Audio requires user interaction');
-            });
-    }
-}, { once: true });
+// Update state when music ends naturally
+document.getElementById('bgMusic').addEventListener('ended', function() {
+    document.getElementById('playPauseBtn').textContent = '▶️';
+    isPlaying = false;
+});
 </script>
 
 </body>
